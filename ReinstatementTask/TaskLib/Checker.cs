@@ -25,7 +25,12 @@ namespace TaskLib
 			try
 			{
 				string[] lines = File.ReadAllLines(filePath);
-				
+
+				if (lines.Length == 0)
+				{
+					return null;
+				}
+
 				foreach (string line in lines)
 				{
 					string[] numbers = line.Split(new char[] { ' ', '\t' },

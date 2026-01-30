@@ -7,6 +7,7 @@ namespace TaskTests
     {
 		private string path = "";
 
+		// if error, the answer is false
         [TestMethod]
         public void TestNoFile()
         {

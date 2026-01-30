@@ -28,7 +28,8 @@ namespace TaskLib
 				
 				foreach (string line in lines)
 				{
-					string[] numbers = line.Split([' ', '\t'], StringSplitOptions.RemoveEmptyEntries);
+					string[] numbers = line.Split(new char[] { ' ', '\t' },
+											StringSplitOptions.RemoveEmptyEntries);
 
 					foreach (string numberStr in numbers)
 					{

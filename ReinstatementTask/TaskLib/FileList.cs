@@ -25,13 +25,15 @@ namespace TaskLib
 			{
 				head = insertNode;
 				tail = head;
-
-				return;
+			} 
+			else
+			{
+				tail?.next = insertNode;
+				insertNode.prev = tail;
+				tail = insertNode;
 			}
 
-			tail?.next = insertNode;
-			insertNode.prev = tail;
-			tail = insertNode;
+			Size++;
 		}
 
 		public void Clear()

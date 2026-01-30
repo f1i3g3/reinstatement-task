@@ -4,18 +4,22 @@ namespace TaskLib
 {
 	public class FileList()
     {
-		public class Node(int value)
-        {
+		public class Node
+		{
 			internal Node? next = null;
 			internal Node? prev = null;
+			public int Value { get; private set; }
 
-            public int Value { get; private set; } = value;
-        }
+			public Node(int value)
+			{
+				Value = value;
+			}
+		}
 
 		private Node? head = null;
 		private Node? tail = null;
 
-        public int Size { get; private set; } = 0;
+		public int Size { get; private set; } = 0;
 
 		public void Add(int value)
 		{
@@ -25,15 +29,15 @@ namespace TaskLib
 			{
 				head = insertNode;
 				tail = head;
-			} 
+			}
 			else
 			{
-				tail?.next = insertNode;
+				tail!.next = insertNode;
 				insertNode.prev = tail;
 				tail = insertNode;
 			}
 
-			Size++;
+			Size++; 
 		}
 
 		public void Clear()
@@ -41,9 +45,9 @@ namespace TaskLib
 			Node? currNode = head;
 			while (currNode != null)
 			{
-				Node? nextNode = currNode?.next;
-				currNode?.prev = null;
-				currNode?.next = null;
+				Node? nextNode = currNode.next;
+				currNode.prev = null;
+				currNode.next = null;
 				currNode = nextNode;
 			}
 
@@ -52,8 +56,8 @@ namespace TaskLib
 		}
 
 		public bool IsEmpty()
-		{ 
-			return Size == 0; 
+		{
+			return Size == 0;
 		}
 
 		public bool IsSymmetrical()
@@ -66,21 +70,18 @@ namespace TaskLib
 			Node? start = head;
 			Node? end = tail;
 
-			int size = 1;
-
-			while (size <= Size / 2)
+			for (int i = 0; i < Size / 2; i++)
 			{
-				if (start?.Value != end?.Value)
+				if (start!.Value != end!.Value)
 				{
 					return false;
 				}
 
-				start = start?.next;
-				end = end?.prev;
-				size++;
+				start = start.next;
+				end = end.prev;
 			}
 
 			return true;
 		}
-    }
+	}
 }

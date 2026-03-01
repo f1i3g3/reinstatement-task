@@ -28,7 +28,7 @@ namespace TaskLib
 
 				if (lines.Length == 0)
 				{
-					return null;
+					return list;
 				}
 
 				foreach (string line in lines)

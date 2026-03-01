@@ -5,14 +5,13 @@ namespace TaskTests
     [TestClass]
     public sealed class SorterTests
     {
-		private string path = "";
-		// TODO: fix path (currently launching from debug)
+		private string path = Path.GetFullPath(Path.Combine(Directory.GetCurrentDirectory(), "..", "..", "..")); // working directory
 
 		// if error, the answer is false
         [TestMethod]
         public void TestNoFile()
         {
-			path = Path.Combine(Directory.GetCurrentDirectory(), "Files", "nofile.txt");
+			path =  Path.GetFullPath(Path.Combine(path, "Files", "nofile.txt"));
 			Assert.IsFalse(Checker.CheckForSymmetry(path));
 		}
 
@@ -20,42 +19,42 @@ namespace TaskTests
 		[TestMethod]
 		public void TestEmptyList()
 		{
-			path = Path.Combine(Directory.GetCurrentDirectory(), "Files", "empty.txt");
+			path = Path.GetFullPath(Path.Combine(path, "Files", "empty.txt"));
 			Assert.IsTrue(Checker.CheckForSymmetry(path));
 		}
 
 		[TestMethod]
 		public void TestOneElemList()
 		{
-			path = Path.Combine(Directory.GetCurrentDirectory(), "Files", "array1.txt");
+			path = Path.GetFullPath(Path.Combine(path, "Files", "array1.txt"));
 			Assert.IsTrue(Checker.CheckForSymmetry(path));
 		}
 
 		[TestMethod]
 		public void TestEvenSymmetricalList()
 		{
-			path = Path.Combine(Directory.GetCurrentDirectory(), "Files", "evensym.txt");
+			path = Path.GetFullPath(Path.Combine(path, "Files", "evensym.txt"));
 			Assert.IsTrue(Checker.CheckForSymmetry(path));
 		}
 
 		[TestMethod]
 		public void TestEvenAsymmetricalList()
 		{
-			path = Path.Combine(Directory.GetCurrentDirectory(), "Files", "evenasym.txt");
+			path = Path.GetFullPath(Path.Combine(path, "Files", "evenasym.txt"));
 			Assert.IsFalse(Checker.CheckForSymmetry(path));
 		}
 
 		[TestMethod]
 		public void TestOddSymmetricalList()
 		{
-			path = Path.Combine(Directory.GetCurrentDirectory(), "Files", "oddsym.txt");
+			path = Path.GetFullPath(Path.Combine(path, "Files", "oddsym.txt"));
 			Assert.IsTrue(Checker.CheckForSymmetry(path));
 		}
 
 		[TestMethod]
 		public void TestOddAsymmetricalList()
 		{
-			path = Path.Combine(Directory.GetCurrentDirectory(), "Files", "oddasym.txt");
+			path = Path.GetFullPath(Path.Combine(path, "Files", "oddasym.txt"));
 			Assert.IsFalse(Checker.CheckForSymmetry(path));
 		}
 	}
